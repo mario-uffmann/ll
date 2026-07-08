@@ -15,24 +15,26 @@ works on Windows, Linux and macOS.
 
 ## Install
 
-Clone the repo (or just grab `ll.py`) and add an alias in your shell:
+Clone the repo and add an alias pointing at the launcher for your shell.
+The launcher creates a local `.venv` on first run (per machine) and installs
+`requirements.txt` into it — no manual setup.
 
 **bash / zsh** (`~/.bashrc` / `~/.zshrc`):
 
 ```sh
-alias ll='python3 /path/to/ll/ll.py'
+alias ll='/path/to/ll/ll.sh'
 ```
 
 **PowerShell** (`$PROFILE`):
 
 ```powershell
-function ll { python C:\path\to\ll\ll.py @args }
+function ll { & C:\path\to\ll\ll.ps1 @args }
 ```
 
 **fish** (`~/.config/fish/config.fish`):
 
 ```fish
-alias ll 'python3 /path/to/ll/ll.py'
+alias ll '/path/to/ll/ll.sh'
 ```
 
 ## Usage
