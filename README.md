@@ -15,27 +15,25 @@ works on Windows, Linux and macOS.
 
 ## Install
 
-Clone the repo and add an alias pointing at the launcher for your shell.
-The launcher creates a local `.venv` on first run (per machine) and installs
-`requirements.txt` into it — no manual setup.
+Clone the repo and run the installer — it adds the `ll` alias to your shell
+config (idempotent) and pre-creates the local `.venv`:
 
-**bash / zsh** (`~/.bashrc` / `~/.zshrc`):
+**Linux / macOS** (bash, zsh, fish):
 
 ```sh
-alias ll='/path/to/ll/ll.sh'
+git clone https://github.com/mario-uffmann/ll ~/ll
+~/ll/install.sh
 ```
 
-**PowerShell** (`$PROFILE`):
+**Windows** (PowerShell):
 
 ```powershell
-function ll { & C:\path\to\ll\ll.ps1 @args }
+git clone https://github.com/mario-uffmann/ll C:\tools\ll
+C:\tools\ll\install.ps1
 ```
 
-**fish** (`~/.config/fish/config.fish`):
-
-```fish
-alias ll '/path/to/ll/ll.sh'
-```
+Open a new shell afterwards. Prefer manual setup? Point an alias at
+`ll.sh` / `ll.ps1` yourself — the launcher creates the `.venv` on first run.
 
 ## Usage
 
