@@ -22,4 +22,15 @@ else
 fi
 
 "$REPO/ll.sh" "$REPO" >/dev/null
-echo "venv ready - open a new shell and run: ll"
+echo "venv ready"
+
+# Refresh the current window so `ll` works immediately, without manually
+# opening a new terminal. Only do this when attached to a real terminal -
+# exec'ing an interactive shell in a non-interactive/automated context
+# (CI, piped input, etc.) would just hang.
+if [ -t 0 ] && [ -t 1 ]; then
+    echo "Reloading ${SHELL:-shell} ..."
+    exec "${SHELL:-sh}" -l
+else
+    echo "Open a new shell and run: ll"
+fi

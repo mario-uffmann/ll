@@ -18,4 +18,11 @@ if (Select-String -Path $PROFILE -Pattern 'll\.ps1' -Quiet) {
 }
 
 & $launcher $repo | Out-Null
-Write-Output 'venv ready - open a new shell and run: ll'
+Write-Output 'venv ready'
+
+# Refresh the current session so `ll` works immediately, without manually
+# opening a new shell. Dot-sourcing the profile is safe to run even
+# non-interactively (unlike relaunching the process), so no interactivity
+# check is needed here.
+. $PROFILE
+Write-Output 'Profile reloaded - ll is ready to use.'
