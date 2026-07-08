@@ -186,7 +186,10 @@ def main() -> int:
     parser.add_argument("path", nargs="?", default=".", help="directory to list (default: .)")
     args = parser.parse_args()
 
-    locale.setlocale(locale.LC_ALL, "")
+    try:
+        locale.setlocale(locale.LC_ALL, "")
+    except locale.Error:
+        pass  # minimal environments (e.g. containers) may lack locale data
     enable_ansi_on_windows()
 
     resolved = os.path.abspath(args.path)
